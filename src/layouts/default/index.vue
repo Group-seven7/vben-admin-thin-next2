@@ -87,6 +87,7 @@
     &-main {
       width: 100%;
       margin-left: 1px;
+      background: linear-gradient(to bottom, #1988f9 20%, #f0f0f0 20%); /* 渐变背景 */
     }
   }
 </style>

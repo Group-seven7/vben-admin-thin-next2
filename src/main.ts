@@ -5,6 +5,8 @@ import 'virtual:windi-utilities.css';
 // Register icon sprite
 import 'virtual:svg-icons-register';
 import App from './App.vue';
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 import { createApp } from 'vue';
 import { initAppConfigStore } from '/@/logics/initAppConfig';
 import { setupErrorHandle } from '/@/logics/error-handle';
@@ -52,7 +54,7 @@ async function bootstrap() {
 
   // https://next.router.vuejs.org/api/#isready
   // await router.isReady();
-
+  app.use(Antd);
   app.mount('#app');
 }
 
