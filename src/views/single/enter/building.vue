@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="mt-6">
-        <div>项目规划</div>
+        <div>项目描述</div>
         <a-textarea
           show-count
           :maxlength="2000"
@@ -66,7 +66,7 @@
       <div class="mt-5">
         <div>项目规划指标</div>
         <div>
-          <a-space direction="vertical" class="mr-15 mt-5" v-for="(value, key) in data.planning">
+          <a-space direction="vertical" class="mr-15 mt-5" v-for="value in data.planning">
             <span>{{ value.title }}</span>
             <a-input placeholder="请输入权益比例" suffix="%" />
           </a-space>

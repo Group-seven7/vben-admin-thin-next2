@@ -44,6 +44,7 @@
     "chart.js": "^4.4.6",
     "crypto-js": "^4.1.1",
     "echarts": "^5.2.2",
+    "element-plus": "^2.8.7",
     "lodash-es": "^4.17.21",
     "mockjs": "^1.1.0",
     "moment": "^2.29.1",

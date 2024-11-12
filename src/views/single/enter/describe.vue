@@ -97,68 +97,85 @@
                 </div>
               </a-space>
             </div>
-            <div class="mt-5 flex">
-              <div class="flex border-1 border-black rounded-lg">
+            <div class="mt-5 flex flex-wrap">
+              <div class="flex border border-black rounded-lg w-full sm:w-auto flex-1 mb-4">
                 <div
                   class="writing-mode-vertical text-gray-800 rounded-l-lg rounded-bl-lg bg-gray-300 p-2 border-black"
                   >规划</div
                 >
                 <div class="">
-                  <div class="flex items-center border-l-1 border-black">
+                  <div class="flex items-center border-l border-black">
                     <span>建筑面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
-                  <div class="flex items-center border-t-1 border-l-1 border-black">
+                  <div class="flex items-center border-t border-l border-black">
                     <span>套内面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
                 </div>
               </div>
-              <div class="flex border-1 border-black rounded-lg w-210px ml-15">
+
+              <div
+                class="flex border border-black rounded-lg w-full sm:w-auto flex-1 mb-4 ml-0 sm:ml-4"
+              >
                 <div
                   class="writing-mode-vertical rounded-l-lg rounded-bl-lg text-gray-800 bg-gray-300 p-2 border-black"
                   >预测</div
                 >
                 <div class="">
-                  <div class="flex items-center border-l-1 border-black">
+                  <div class="flex items-center border-l border-black">
                     <span>建筑面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
-                  <div class="flex items-center border-t-1 border-l-1 border-black">
+                  <div class="flex items-center border-t border-l border-black">
                     <span>套内面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
                 </div>
               </div>
-              <div class="flex border-1 border-black rounded-lg w-210px ml-15">
+
+              <div
+                class="flex border border-black rounded-lg w-full sm:w-auto flex-1 mb-4 ml-0 sm:ml-4"
+              >
                 <div
                   class="writing-mode-vertical rounded-l-lg rounded-bl-lg text-gray-800 bg-gray-300 p-2 border-black"
                   >实测</div
                 >
                 <div class="">
-                  <div class="flex items-center border-l-1 border-black">
+                  <div class="flex items-center border-l border-black">
                     <span>建筑面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
-                  <div class="flex items-center border-t-1 border-l-1 border-black">
+                  <div class="flex items-center border-t border-l border-black">
                     <span>套内面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
                 </div>
               </div>
-              <div class="flex border-1 border-black rounded-lg w-210px ml-15">
+
+              <div
+                class="flex border border-black rounded-lg w-full sm:w-auto flex-1 mb-4 ml-0 sm:ml-4"
+              >
                 <div
                   class="writing-mode-vertical rounded-l-lg rounded-bl-lg text-gray-800 bg-gray-300 p-2 border-black"
                   >可租</div
                 >
                 <div class="">
-                  <div class="flex items-center border-l-1 border-black">
+                  <div class="flex items-center border-l border-black">
                     <span>建筑面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
-                  <div class="flex items-center border-t-1 border-l-1 border-black">
+                  <div class="flex items-center border-t border-l border-black">
                     <span>套内面积</span>
-                    <input class="w-20 focus:outline-none" /><span>㎡</span>
+                    <input class="w-20 focus:outline-none" />
+                    <span>㎡</span>
                   </div>
                 </div>
               </div>

@@ -31,12 +31,21 @@
     <div v-if="currentStep === 2">
       <room></room>
       <!-- 房间配置的相关表单或内容 -->
-      <a-button type="primary" @click="nextStep">下一步</a-button>
+      <div class="flex">
+        <div class="ml-auto">
+          <span class="text-blue-500">保存并去完善推广信息</span>
+          <a-button type="primary" @click="nextStep">保存</a-button>
+        </div>
+      </div>
     </div>
     <div v-if="currentStep === 3">
       <information></information>
       <!-- 推广描述的相关表单或内容 -->
-      <a-button type="primary" @click="finish">完成</a-button>
+      <div class="flex">
+        <div class="ml-auto">
+          <a-button type="primary" @click="nextStep">保存</a-button>
+        </div>
+      </div>
     </div>
   </a-modal>
 </template>

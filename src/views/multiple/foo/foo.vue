@@ -1,143 +1,94 @@
 <template>
   <PageWrapper>
-    <div>
-      <div>
-        <div>项目信息</div>
-        <div class="rounded-lg bg-gray-200">
-          <div class="flex">
-            <div class="m-3">项目名称：</div>
-            <div class="m-3">翻斗花园</div>
-            <div class="m-3">项目分期：</div>
-            <div class="m-3">1.1期</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col md:flex-row mt-5">
-        <!-- 左边 -->
-        <div class="rounded-lg bg-gray-200 mr-0 md:mr-7 mb-5 md:mb-0">
-          <div class="m-5 flex items-center">
-            <div>房型列表</div>
-            <Icon icon="iconamoon:question-mark-circle-light" style="color: #ffa500" />
-          </div>
-          <div>
-            <div
-              class="border border-gray bg-white m-5 w-full md:w-35 h-20 rounded-lg flex items-center"
-            >
-              <div class="ml-2">房型ML</div>
-            </div>
-            <div
-              class="border-dashed border-2 border-gray-400 bg-white m-5 w-full md:w-35 h-20 rounded-lg flex items-center justify-center"
-            >
-              <Icon icon="ri:add-line" />
-            </div>
-          </div>
-        </div>
+    <a-tabs v-model:activeKey="activeKey" centered>
+      <a-tab-pane key="1" tab="换房申请">
+        <table class="bordered-table">
+          <thead>
+            <tr>
+              <th>状态</th>
+              <th>申请人</th>
+              <th>目标房源地址</th>
+              <th>提交时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> 待处理 </td>
+              <td> 黄哈哈/123456789 </td>
+              <td> 武汉精准医疗产业基地一期7#栋-202室 </td>
+              <td> 2023.02.10 20:46 </td>
+              <td class="text-blue-500" @click="showDetailModal"> 详情 </td>
+            </tr>
+          </tbody>
+        </table>
 
-        <!-- 右边 -->
-        <div class="rounded-lg bg-gray-200 w-full md:w-auto">
-          <div class="m-5">
-            <div class="flex flex-col md:flex-row items-start">
-              <div class="mr-3">楼栋信息</div>
-              <a-select value="address1" class="mb-2 md:mb-0 w-full md:w-auto">
-                <a-select-option value="address1">1栋1单元</a-select-option>
-                <a-select-option value="address2">1栋2单元</a-select-option>
-              </a-select>
-              <div class="ml-auto text-sm">
-                <span>共 1 层，共 5 间</span>
-                <span>| 禁用 0 间</span>
-                <span>| 启用 0 间</span>
-                <span>| 剩余 5 间未分配</span>
-              </div>
-            </div>
-          </div>
-          <div class="bg-white rounded-lg m-5 pb-5">
-            <div class="flex border-b border-gray-300 pb-1 m-5">
-              <div>1F</div>
-              <div class="ml-auto">
-                <input type="checkbox" />
-                <span>全选</span>
-              </div>
-            </div>
-            <div class="m-5 flex flex-wrap">
-              <div class="mr-3 mb-3 w-26 h-20 border border-gray-500 rounded-lg p-2">101</div>
-              <div class="mr-3 mb-3 w-26 h-20 border border-gray-500 rounded-lg p-2">102</div>
-              <div class="mr-3 mb-3 w-26 h-20 border border-gray-500 rounded-lg p-2">103</div>
-              <div class="mr-3 mb-3 w-26 h-20 border border-gray-500 rounded-lg p-2">104</div>
-              <div class="mr-3 mb-3 w-26 h-20 border border-gray-500 rounded-lg p-2">105</div>
-              <div
-                class="border-dashed border-gray-500 mr-3 mb-3 w-26 h-20 rounded-lg flex items-center justify-center"
-              >
-                <Icon icon="ri:add-line" />
-              </div>
-            </div>
-          </div>
-          <div class="m-5">
-            <div class="text-lg font-semibold mb-2">对[]房间进行统一配置</div>
-            <div class="flex flex-wrap">
-              <div class="flex border border-gray-300 rounded-lg mr-5 mb-3 flex-1 min-w-[200px]">
-                <div
-                  class="rounded-l-lg rounded-bl-lg bg-gray-300 flex items-center justify-center"
-                >
-                  <div class="ml-2 mr-2">房型</div>
-                </div>
-                <a-select value="address1" class="w-full">
-                  <a-select-option value="address1">请选择</a-select-option>
-                  <a-select-option value="address2">1栋2单元</a-select-option>
-                </a-select>
-              </div>
-              <div class="flex border border-gray-300 rounded-lg mr-5 mb-3 flex-1 min-w-[200px]">
-                <div
-                  class="rounded-l-lg rounded-bl-lg bg-gray-300 flex items-center justify-center"
-                >
-                  <div class="ml-2 mr-2">出租价</div>
-                </div>
-                <a-select value="address1" class="mb-2 md:mb-0 w-full">
-                  <a-select-option value="address1">请选择</a-select-option>
-                  <a-select-option value="address2">1栋2单元</a-select-option>
-                </a-select>
-              </div>
-              <div class="flex border border-gray-300 rounded-lg mr-5 mb-3 flex-1 min-w-[200px]">
-                <div
-                  class="rounded-l-lg rounded-bl-lg bg-gray-300 flex items-center justify-center"
-                >
-                  <div class="ml-2 mr-2">房型</div>
-                </div>
-                <a-select value="address1" class="mb-2 md:mb-0 w-full">
-                  <a-select-option value="address1">请选择</a-select-option>
-                  <a-select-option value="address2">1栋2单元</a-select-option>
-                </a-select>
-              </div>
-              <div class="flex border border-gray-300 rounded-lg mr-5 mb-3 flex-1 min-w-[200px]">
-                <div
-                  class="rounded-l-lg rounded-bl-lg bg-gray-300 flex items-center justify-center"
-                >
-                  <div class="ml-2 mr-2">房型</div>
-                </div>
-                <a-select value="address1" class="mb-2 md:mb-0 w-full">
-                  <a-select-option value="address1">请选择</a-select-option>
-                  <a-select-option value="address2">1栋2单元</a-select-option>
-                </a-select>
-              </div>
-              <div class="flex border border-gray-300 rounded-lg mr-5 mb-3 flex-1 min-w-[200px]">
-                <div
-                  class="rounded-l-lg rounded-bl-lg bg-gray-300 flex items-center justify-center"
-                >
-                  <div class="ml-2 mr-2">房型</div>
-                </div>
-                <a-select value="address1" class="mb-2 md:mb-0 w-full">
-                  <a-select-option value="address1">请选择</a-select-option>
-                  <a-select-option value="address2">1栋2单元</a-select-option>
-                </a-select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <!-- 详情对话框 -->
+        <a-modal
+          v-model:visible="isModalVisible"
+          title="详情"
+          @cancel="isModalVisible = false"
+          footer="null"
+        >
+          <p>状态: 待处理</p>
+          <p>申请人: 黄哈哈/123456789</p>
+          <p>目标房源地址: 武汉精准医疗产业基地一期7#栋-202室</p>
+          <p>提交时间: 2023.02.10 20:46</p>
+        </a-modal>
+      </a-tab-pane>
+      <a-tab-pane key="2" tab="退房申请" force-render>
+        <table class="bordered-table">
+          <thead>
+            <tr>
+              <th>状态</th>
+              <th>申请人</th>
+              <th>预计离房日期</th>
+              <th>提交时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> 待处理 </td>
+              <td> 黄哈哈/123456789 </td>
+              <td> 2023.02.10 </td>
+              <td> 2023.02.10 20:46 </td>
+              <td class="text-blue-500" @click="showDetailModal"> 详情 </td>
+            </tr>
+          </tbody>
+        </table>
+      </a-tab-pane>
+    </a-tabs>
   </PageWrapper>
 </template>
 
 <script lang="ts" setup>
   import { PageWrapper } from '/@/components/Page';
-  import Icon from '/@/components/Icon/src/Icon.vue';
+  import { ref } from 'vue';
+
+  const activeKey = ref('1');
+  const isModalVisible = ref(false);
+
+  const showDetailModal = () => {
+    isModalVisible.value = true; // 显示对话框
+  };
 </script>
+
+<style scoped>
+  .bordered-table {
+    width: 100%;
+    border-collapse: collapse; /* 合并边框 */
+  }
+
+  .bordered-table th,
+  .bordered-table td {
+    border: 1px solid #dddddd; /* 边框颜色 */
+    padding: 8px; /* 单元格内边距 */
+    text-align: left;
+  }
+
+  .text-blue-500 {
+    color: #007bff; /* 自定义的蓝色 */
+    cursor: pointer; /* 指针样式 */
+  }
+</style>
