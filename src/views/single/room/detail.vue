@@ -119,7 +119,7 @@
               <Contractmanagement></Contractmanagement>
             </a-tab-pane>
             <a-tab-pane key="4" tab="财务账单"><Financialbills></Financialbills></a-tab-pane>
-            <a-tab-pane key="5" tab="租后服务">Content of tab 3</a-tab-pane>
+            <a-tab-pane key="5" tab="租后服务"><Postrentalservice></Postrentalservice></a-tab-pane>
           </a-tabs>
           <div v-if="activeKey !== '4' && activeKey !== '5'" class="flex">
             <div class="text-blue-500 ml-3">
@@ -152,7 +152,7 @@
   import Listinghistory from './Listinghistory.vue'; //房源记录组件
   import Contractmanagement from './Contractmanagement.vue'; //合约管理组件
   import Financialbills from './Financialbills.vue'; //财务账单组件
-
+  import Postrentalservice from './Postrentalservice.vue'; //租后服务组件
   const activeKey = ref('1');
 </script>
 <style scoped>
