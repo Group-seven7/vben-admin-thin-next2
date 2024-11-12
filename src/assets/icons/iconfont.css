@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('iconfont.ttf?t=1728543890826');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+}
