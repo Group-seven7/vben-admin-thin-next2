@@ -23,7 +23,7 @@
           <Col :lg="{ span: 12 }" :md="{ span: 12 }" class="flex-item">
             <Card :headStyle="{ borderBottom: 'unset' }" size="small" title="审批管理">
               <div class="flex flex-wrap">
-                <div v-for="(value, key) in data.auditManagement" :key="key" class="w-[10vw] pb-4">
+                <div v-for="(value, key) in data.auditManagement" :key="key" class="w-[8vw] h-15">
                   <div class="text-center">{{ value }}</div>
                   <div class="text-center">{{ key }}</div>
                 </div>

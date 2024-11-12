@@ -11,7 +11,7 @@ const dashboard: AppRouteModule = {
   meta: {
     hideChildrenInMenu: true,
     icon: 'simple-icons:about-dot-me',
-    title: '单页模块',
+    title: '资产管理',
     orderNo: 1,
   },
   children: [
@@ -20,7 +20,7 @@ const dashboard: AppRouteModule = {
       name: 'singlePage',
       component: () => import('/@/views/single/index.vue'),
       meta: {
-        title: '单页模块的页面',
+        title: '资产管理的首页',
         icon: 'simple-icons:about-dot-me',
         hideMenu: true,
       },
