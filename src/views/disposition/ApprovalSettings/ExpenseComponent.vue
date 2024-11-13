@@ -1,6 +1,6 @@
 <!--费用科目-->
 <template>
-  <PageWrapper>
+  <PageWrapper class="overflow-y-auto h-75vh border border-gray-300">
     <nav class="flex flex-col w-full justify-between">
       <!-- 使用v-for循环渲染每个标题和对应的复选框组 -->
       <div

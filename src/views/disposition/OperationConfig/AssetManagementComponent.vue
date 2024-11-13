@@ -1,6 +1,6 @@
 <!--资产管理-->
 <template>
-  <PageWrapper>
+  <PageWrapper class="overflow-y-auto h-75vh border border-gray-300">
     <header class="flex items-center px-4 py-2 border-b">
       <div class="flex justify-start mr-4">
         <Select
