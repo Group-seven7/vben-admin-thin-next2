@@ -1,1003 +1,1125 @@
 <template>
-  <div class="mt-4">
-    <Checkbox id="workstation" v-model:checked="WK1" size="medium">工作台</Checkbox>
-    <hr class="mt-4" />
-    <div class="ml-4 mt-4">
-      <Checkbox id="viewOnPC" v-model:checked="WK2" size="medium">查看(电脑端)</Checkbox>
+  <div class="overflow-y-auto h-[73vh] border border-gray-300" style="max-height: 1000px">
+    <div class="mt-4">
+      <Checkbox id="workstation" v-model:checked="WK1" size="medium">工作台</Checkbox>
+      <hr class="mt-4" />
+      <div class="ml-4 mt-4">
+        <Checkbox id="viewOnPC" v-model:checked="WK2" size="medium">查看(电脑端)</Checkbox>
+      </div>
     </div>
-  </div>
-  <div class="mt-10">
-    <Checkbox v-model:checked="Z1" size="medium">招商管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[200px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="s1" size="medium">租客-私客</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
+    <div class="mt-10">
+      <Checkbox v-model:checked="Z1" size="medium">招商管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[200px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="s1" size="medium">租客-私客</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
 
-          <Checkbox id="addResource" v-model:checked="s2" class="mr-6 w-[150px]" size="medium"
-            >添加资源</Checkbox
-          >
-          <Checkbox id="edit" v-model:checked="s3" class="mr-6 w-[150px]" size="medium"
-            >编辑</Checkbox
-          >
-          <Checkbox id="followUp" v-model:checked="s4" class="mr-6 w-[150px]" size="medium"
-            >跟进</Checkbox
-          >
-          <Checkbox id="assign" v-model:checked="s5" class="mr-6 w-[150px]" size="medium"
-            >指派</Checkbox
-          >
-          <Checkbox id="close" v-model:checked="s6" class="mr-6 w-[150px]" size="medium"
-            >关闭</Checkbox
-          >
-          <Checkbox id="reactivate" v-model:checked="s7" class="mr-6 w-[150px]" size="medium"
-            >重新激活</Checkbox
-          >
-          <Checkbox id="transferToPublic" v-model:checked="s8" class="mr-6 w-[150px]" size="medium"
-            >转入公客</Checkbox
-          >
-          <Checkbox id="shareResource" v-model:checked="s9" class="mr-6 w-[150px]" size="medium"
-            >共享资源</Checkbox
-          >
-          <Checkbox id="delete" v-model:checked="s10" class="mr-6 w-[150px]" size="medium"
-            >删除</Checkbox
-          >
-          <Checkbox id="addReminder" v-model:checked="s11" class="mr-6 w-[150px]" size="medium"
-            >添加提醒</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="g1" size="medium">租客-公客</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="g2" class="mr-6 w-[150px]" size="medium">添加资源</Checkbox>
-          <Checkbox v-model:checked="g3" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="g4" class="mr-6 w-[150px]" size="medium">抢单</Checkbox>
-          <Checkbox v-model:checked="g5" class="mr-6 w-[150px]" size="medium">跟进</Checkbox>
-          <Checkbox v-model:checked="g6" class="mr-6 w-[150px]" size="medium">指派</Checkbox>
-          <Checkbox v-model:checked="g7" class="mr-6 w-[150px]" size="medium">关闭</Checkbox>
-          <Checkbox v-model:checked="g8" class="mr-6 w-[150px]" size="medium">重新激活</Checkbox>
-          <Checkbox v-model:checked="g9" class="mr-6 w-[150px]" size="medium">共享资源</Checkbox>
-          <Checkbox v-model:checked="g10" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="g11" class="mr-6 w-[150px]" size="medium">添加提醒</Checkbox>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="Zc1" size="medium">资产管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[300px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="ZC1" size="medium">资产管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[150px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="ZC2" class="mr-6 w-[150px]" size="medium">添加项目</Checkbox>
-          <Checkbox v-model:checked="ZC3" class="mr-6 w-[150px]" size="medium">编辑项目</Checkbox>
-          <Checkbox v-model:checked="ZC4" class="mr-6 w-[150px]" size="medium">删除项目</Checkbox>
-          <Checkbox v-model:checked="ZC5" class="mr-6 w-[150px]" size="medium">关闭房源</Checkbox>
-          <Checkbox v-model:checked="ZC6" class="mr-6 w-[150px]" size="medium">删除房源</Checkbox>
-          <Checkbox v-model:checked="ZC7" class="mr-6 w-[150px]" size="medium"
-            >编辑房源信息</Checkbox
-          >
-          <Checkbox v-model:checked="ZC8" class="mr-6 w-[150px]" size="medium"
-            >变更房源状态</Checkbox
-          >
-          <Checkbox v-model:checked="ZC9" class="mr-6 w-[150px]" size="medium">激活房源</Checkbox>
-          <Checkbox v-model:checked="ZC10" class="mr-6 w-[150px]" size="medium">房源记录</Checkbox>
-          <Checkbox v-model:checked="ZC11" class="mr-6 w-[150px]" size="medium"
-            >房源价格修改</Checkbox
-          >
-          <Checkbox v-model:checked="ZC12" class="mr-6 w-[150px]" size="medium"
-            >房源价格修改</Checkbox
-          >
-
-          <Checkbox v-model:checked="ZC13" class="mr-6 w-[150px]" size="medium"
-            >配置消息通知</Checkbox
-          >
-          <Checkbox v-model:checked="ZC14" class="mr-6 w-[150px]" size="medium"
-            >修改可租日期</Checkbox
-          >
-          <Checkbox v-model:checked="ZC15" class="mr-6 w-[150px]" size="medium">锁房/解锁</Checkbox>
-          <Checkbox v-model:checked="ZC16" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="KF1" size="medium">空房快查</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="TJ1" size="medium">调价管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="TJ2" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
-          <Checkbox v-model:checked="TJ3" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="TJ4" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="HY1" size="medium">合约管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[530px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="YD1" size="medium">预定管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[150px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="YD2" class="mr-6 w-[150px]" size="medium">添加预定</Checkbox>
-          <Checkbox v-model:checked="YD3" class="mr-6 w-[150px]" size="medium">退定</Checkbox>
-          <Checkbox v-model:checked="YD4" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
-          <Checkbox v-model:checked="YD5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="YD6" class="mr-6 w-[150px]" size="medium">关联房源</Checkbox>
-          <Checkbox v-model:checked="YD7" class="mr-6 w-[150px]" size="medium"
-            >查看租客电话</Checkbox
-          >
-          <Checkbox v-model:checked="YD8" class="mr-6 w-[150px]" size="medium"
-            >邀请租客支付</Checkbox
-          >
-          <Checkbox v-model:checked="YD9" class="mr-6 w-[150px]" size="medium"
-            >变更预定房源</Checkbox
-          >
-          <Checkbox v-model:checked="YD10" class="mr-6 w-[150px]" size="medium">还原定金</Checkbox>
-          <Checkbox v-model:checked="YD11" class="mr-6 w-[150px]" size="medium">邀请签字</Checkbox>
-          <Checkbox v-model:checked="YD12" class="mr-6 w-[150px]" size="medium"
-            >修改预定信息</Checkbox
-          >
-
-          <Checkbox v-model:checked="YD13" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="PD1" size="medium">排队管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="PD2" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
-          <Checkbox v-model:checked="PD3" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="PD4" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="ZK1" size="medium">租客合同</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[200px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="ZK2" class="mr-6 w-[150px]" size="medium">添加合同</Checkbox>
-
-          <Checkbox v-model:checked="ZK3" class="mr-6 w-[150px]" size="medium">邀请签字</Checkbox>
-          <Checkbox v-model:checked="ZK4" class="mr-6 w-[150px]" size="medium">续签</Checkbox>
-          <Checkbox v-model:checked="ZK5" class="mr-6 w-[150px]" size="medium"
-            >退租-并结账</Checkbox
-          >
-          <Checkbox v-model:checked="ZK6" class="mr-6 w-[150px]" size="medium">重置</Checkbox>
-          <Checkbox v-model:checked="ZK7" class="mr-6 w-[150px]" size="medium"
-            >退租-后结账</Checkbox
-          >
-          <Checkbox v-model:checked="ZK8" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
-          <Checkbox v-model:checked="ZK9" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="ZK10" class="mr-6 w-[150px]" size="medium">关联房源</Checkbox>
-          <Checkbox v-model:checked="ZK11" class="mr-6 w-[150px]" size="medium"
-            >修改退租信息</Checkbox
-          >
-          <Checkbox v-model:checked="ZK12" class="mr-6 w-[150px]" size="medium">退租还原</Checkbox>
-          <Checkbox v-model:checked="ZK13" class="mr-6 w-[150px]" size="medium">邀请确认</Checkbox>
-          <Checkbox v-model:checked="ZK14" class="mr-6 w-[150px]" size="medium"
-            >查看租客电话</Checkbox
-          >
-          <Checkbox v-model:checked="ZK15" class="mr-6 w-[150px]" size="medium"
-            >编辑物业交割单</Checkbox
-          >
-          <Checkbox v-model:checked="ZK16" class="mr-6 w-[150px]" size="medium">换房</Checkbox>
-          <Checkbox v-model:checked="ZK17" class="mr-6 w-[150px]" size="medium"
-            >修改合同信息</Checkbox
-          >
-          <Checkbox v-model:checked="ZK18" class="mr-6 w-[150px]" size="medium">跟进</Checkbox>
-          <Checkbox v-model:checked="ZK19" class="mr-6 w-[150px]" size="medium">预览/打印</Checkbox>
-          <Checkbox v-model:checked="ZK20" class="mr-6 w-[150px]" size="medium"
-            >修改签约人信息</Checkbox
-          >
-          <Checkbox v-model:checked="ZK21" class="mr-6 w-[150px]" size="medium"
-            >修改同住人信息</Checkbox
-          >
-          <Checkbox v-model:checked="ZK22" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-          <Checkbox v-model:checked="ZK23" class="mr-6 w-[150px]" size="medium">导入</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="HT1" size="medium">合同配置</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="CW1" size="medium">财务管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[630px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="ZD1" size="medium">账单管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[150px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="ZD2" class="mr-6 w-[150px]" size="medium"
-            >查看其他账单</Checkbox
-          >
-          <Checkbox v-model:checked="ZD3" class="mr-6 w-[150px]" size="medium"
-            >查看房源账单</Checkbox
-          >
-          <Checkbox v-model:checked="ZD4" class="mr-6 w-[150px]" size="medium"
-            >查看租客账单</Checkbox
-          >
-          <Checkbox v-model:checked="ZD5" class="mr-6 w-[150px]" size="medium"
-            >查看业主账单</Checkbox
-          >
-          <Checkbox v-model:checked="ZD6" class="mr-6 w-[150px]" size="medium">添加账单</Checkbox>
-          <Checkbox v-model:checked="ZD7" class="mr-6 w-[150px]" size="medium">编辑账单</Checkbox>
-          <Checkbox v-model:checked="ZD8" class="mr-6 w-[150px]" size="medium"
-            >付款/付款申请</Checkbox
-          >
-          <Checkbox v-model:checked="ZD9" class="mr-6 w-[150px]" size="medium">收款</Checkbox>
-          <Checkbox v-model:checked="ZD10" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
-          <Checkbox v-model:checked="ZD11" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="ZD12" class="mr-6 w-[150px]" size="medium">关联房源</Checkbox>
-          <Checkbox v-model:checked="ZD13" class="mr-6 w-[150px]" size="medium">关联租客</Checkbox>
-          <Checkbox v-model:checked="ZD14" class="mr-6 w-[150px]" size="medium">关联业主</Checkbox>
-          <Checkbox v-model:checked="ZD15" class="mr-6 w-[150px]" size="medium">催收</Checkbox>
-          <Checkbox v-model:checked="ZD16" class="mr-6 w-[150px]" size="medium">打印</Checkbox>
-          <Checkbox v-model:checked="ZD17" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-          <Checkbox v-model:checked="ZD18" class="mr-6 w-[150px]" size="medium">账单复原</Checkbox>
-          <Checkbox v-model:checked="ZD19" class="mr-6 w-[150px]" size="medium"
-            >导入水电费</Checkbox
-          >
-          <Checkbox v-model:checked="ZD20" class="mr-6 w-[150px]" size="medium">报销同步</Checkbox>
-          <Checkbox v-model:checked="ZD21" class="mr-6 w-[150px]" size="medium">拆分同步</Checkbox>
-          <Checkbox v-model:checked="ZD22" class="mr-6 w-[150px]" size="medium">拆分账单</Checkbox>
-          <Checkbox v-model:checked="ZD23" class="mr-6 w-[150px]" size="medium">申请开票</Checkbox>
-          <Checkbox v-model:checked="ZD24" class="mr-6 w-[150px]" size="medium">导入</Checkbox>
-          <Checkbox v-model:checked="ZD25" class="mr-6 w-[150px]" size="medium">编辑标签</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="ZDLS1" size="medium">账单流水</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="ZDLS2" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
-          <Checkbox v-model:checked="ZDLS3" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="ZDLS4" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-          <Checkbox v-model:checked="ZDLS5" class="mr-6 w-[150px]" size="medium"
-            >补录备注/附件</Checkbox
-          >
-          <Checkbox v-model:checked="ZDLS6" class="mr-6 w-[150px]" size="medium">打印</Checkbox>
-          <Checkbox v-model:checked="ZDLS7" class="mr-6 w-[150px]" size="medium">申请开票</Checkbox>
-          <Checkbox v-model:checked="ZDLS8" class="mr-6 w-[150px]" size="medium">锁票</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="WZK1" size="medium">未知款</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="WZK2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="WZK3" class="mr-6 w-[150px]" size="medium"
-            >添加未知款</Checkbox
-          >
-          <Checkbox v-model:checked="WZK4" class="mr-6 w-[150px]" size="medium">关联流水</Checkbox>
-          <Checkbox v-model:checked="WZK5" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="WZK6" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
-          <Checkbox v-model:checked="WZK7" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="HZZK1" size="medium">租客转账通知</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="HZZK2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="HZZK3" class="mr-6 w-[150px]" size="medium">审核通过</Checkbox>
-          <Checkbox v-model:checked="HZZK4" class="mr-6 w-[150px]" size="medium">审核驳回</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[60px] w-[150px]">
-          <Checkbox v-model:checked="KP1" size="medium">开票记录</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="KP2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="KP3" class="mr-6 w-[150px]" size="medium">申请开票</Checkbox>
-          <Checkbox v-model:checked="KP4" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="KP5" class="mr-6 w-[150px]" size="medium">确认开票</Checkbox>
-          <Checkbox v-model:checked="KP6" class="mr-6 w-[150px]" size="medium">拒接开票</Checkbox>
-          <Checkbox v-model:checked="KP7" class="mr-6 w-[150px]" size="medium">冲红</Checkbox>
-          <Checkbox v-model:checked="KP8" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
-          <Checkbox v-model:checked="KP9" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="KP10" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-          <Checkbox v-model:checked="KP11" class="mr-6 w-[150px]" size="medium">重新开票</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="KPZH1" size="medium">开票账号配置</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="KPZH2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="KPZH3" class="mr-6 w-[150px]" size="medium"
-            >添加开票主体</Checkbox
-          >
-          <Checkbox v-model:checked="KPZH4" class="mr-6 w-[150px]" size="medium">启用主体</Checkbox>
-          <Checkbox v-model:checked="KPZH5" class="mr-6 w-[150px]" size="medium">禁用主体</Checkbox>
-          <Checkbox v-model:checked="KPZH6" class="mr-6 w-[150px]" size="medium">编辑主体</Checkbox>
-          <Checkbox v-model:checked="KPZH7" class="mr-6 w-[150px]" size="medium">删除主体</Checkbox>
-          <Checkbox v-model:checked="KPZH8" class="mr-6 w-[150px]" size="medium">关联账号</Checkbox>
-          <Checkbox v-model:checked="KPZH9" class="mr-6 w-[150px]" size="medium">解绑账号</Checkbox>
-          <Checkbox v-model:checked="KPZH10" class="mr-6 w-[150px]" size="medium"
-            >添加商品</Checkbox
-          >
-          <Checkbox v-model:checked="KPZH11" class="mr-6 w-[150px]" size="medium"
-            >启用商品</Checkbox
-          >
-          <Checkbox v-model:checked="KPZH12" class="mr-6 w-[150px]" size="medium"
-            >禁用商品</Checkbox
-          >
-          <Checkbox v-model:checked="KPZH13" class="mr-6 w-[150px]" size="medium"
-            >删除商品</Checkbox
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="ZH1" size="medium">租后管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[350px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="QT1" size="medium">其他工单</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="QT2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="QT3" class="mr-6 w-[150px]" size="medium">添加工单</Checkbox>
-          <Checkbox v-model:checked="QT4" class="mr-6 w-[150px]" size="medium">编辑工单</Checkbox>
-          <Checkbox v-model:checked="QT5" class="mr-6 w-[150px]" size="medium">派单</Checkbox>
-          <Checkbox v-model:checked="QT6" class="mr-6 w-[150px]" size="medium">改派</Checkbox>
-          <Checkbox v-model:checked="QT7" class="mr-6 w-[150px]" size="medium">完成</Checkbox>
-          <Checkbox v-model:checked="QT8" class="mr-6 w-[150px]" size="medium">验收工单</Checkbox>
-          <Checkbox v-model:checked="QT9" class="mr-6 w-[150px]" size="medium">取消工单</Checkbox>
-          <Checkbox v-model:checked="QT10" class="mr-6 w-[150px]" size="medium">评价工单</Checkbox>
-          <Checkbox v-model:checked="QT11" class="mr-6 w-[150px]" size="medium">删除工单</Checkbox>
-          <Checkbox v-model:checked="QT12" class="mr-6 w-[150px]" size="medium">关联房源</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="HF1" size="medium">换房申请</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="HF2" class="mr-6 w-[150px]" size="medium">申请通过</Checkbox>
-          <Checkbox v-model:checked="HF3" class="mr-6 w-[150px]" size="medium">申请驳回</Checkbox>
-          <Checkbox v-model:checked="HF4" class="mr-6 w-[150px]" size="medium">办理退房</Checkbox>
-          <Checkbox v-model:checked="HF5" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
-          <Checkbox v-model:checked="HF6" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="TF1" size="medium">退房申请</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="TF2" class="mr-6 w-[150px]" size="medium">申请通过</Checkbox>
-          <Checkbox v-model:checked="TF3" class="mr-6 w-[150px]" size="medium">申请驳回</Checkbox>
-          <Checkbox v-model:checked="TF4" class="mr-6 w-[150px]" size="medium">办理退房</Checkbox>
-          <Checkbox v-model:checked="TF5" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
-          <Checkbox v-model:checked="TF6" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="XZ1" size="medium">续租记录</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="XZ2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="XZ3" class="mr-6 w-[150px]" size="medium">申请通过</Checkbox>
-          <Checkbox v-model:checked="XZ4" class="mr-6 w-[150px]" size="medium">申请驳回</Checkbox>
-          <Checkbox v-model:checked="XZ5" class="mr-6 w-[150px]" size="medium">办理退房</Checkbox>
-          <Checkbox v-model:checked="XZ6" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
-          <Checkbox v-model:checked="XZ7" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="YX1" size="medium">营销推广</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[480px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="FY1" size="medium">房源推广</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="FY2" class="mr-6 w-[150px]" size="medium">上架</Checkbox>
-          <Checkbox v-model:checked="FY3" class="mr-6 w-[150px]" size="medium">下架</Checkbox>
-          <Checkbox v-model:checked="FY4" class="mr-6 w-[150px]" size="medium"
-            >上/下架历史记录</Checkbox
-          >
-          <Checkbox v-model:checked="FY5" class="mr-6 w-[150px]" size="medium"
-            >批量标记验真</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="TG1" size="medium">推广配置</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="TG2" class="mr-6 w-[150px]" size="medium">绑定账号</Checkbox>
-          <Checkbox v-model:checked="TG3" class="mr-6 w-[150px]" size="medium">解除账号</Checkbox>
-          <Checkbox v-model:checked="TG4" class="mr-6 w-[150px]" size="medium">管理管家</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="YXZH1" size="medium">营销账户</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="YXZH2" class="mr-6 w-[150px]" size="medium"
-            >充值保证金</Checkbox
-          >
-          <Checkbox v-model:checked="YXZH3" class="mr-6 w-[150px]" size="medium"
-            >充值小牛币</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="YC1" size="medium">异常申报记录</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="YC2" class="mr-6 w-[150px]" size="medium">异常申报</Checkbox>
-          <Checkbox v-model:checked="YC3" class="mr-6 w-[150px]" size="medium">取消</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="YH1" size="medium">优惠卷管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="YH2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="YH3" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
-          <Checkbox v-model:checked="YH4" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="YH5" class="mr-6 w-[150px]" size="medium">启用</Checkbox>
-          <Checkbox v-model:checked="YH6" class="mr-6 w-[150px]" size="medium">分享</Checkbox>
-          <Checkbox v-model:checked="YH7" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
-          <Checkbox v-model:checked="YH8" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="YHQ1" size="medium">优惠券使用明细</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="YHQ2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="YHQ3" class="mr-6 w-[150px]" size="medium"
-            >查看租客电话</Checkbox
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="QB1" size="medium">钱包</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[100px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="QBGL1" size="medium">钱包管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="QBGL2" class="mr-6 w-[150px]" size="medium">查看所有</Checkbox>
-          <Checkbox v-model:checked="QBGL3" class="mr-6 w-[150px]" size="medium">开通钱包</Checkbox>
-          <Checkbox v-model:checked="QBGL4" class="mr-6 w-[150px]" size="medium"
-            >修改钱包名称</Checkbox
-          >
-          <Checkbox v-model:checked="QBGL5" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="SPGL1" size="medium">审批管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[300px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="DSP1" size="medium">待我审批的</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="YSP1" size="medium">我已审批的</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="FQWD1" size="medium">我发起的</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="CSWD1" size="medium">抄送我的</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="WZ1" size="medium">物资管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[180px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="WZGL1" size="medium">物资管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="WZGL2" class="mr-6 w-[150px]" size="medium">添加物品</Checkbox>
-          <Checkbox v-model:checked="WZGL3" class="mr-6 w-[150px]" size="medium">编辑物品</Checkbox>
-          <Checkbox v-model:checked="WZGL4" class="mr-6 w-[150px]" size="medium">调配</Checkbox>
-          <Checkbox v-model:checked="WZGL5" class="mr-6 w-[150px]" size="medium">报废</Checkbox>
-          <Checkbox v-model:checked="WZGL6" class="mr-6 w-[150px]" size="medium">遗失</Checkbox>
-          <Checkbox v-model:checked="WZGL7" class="mr-6 w-[150px]" size="medium">修改状态</Checkbox>
-          <Checkbox v-model:checked="WZGL8" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="WZGL9" class="mr-6 w-[150px]" size="medium">核对信息</Checkbox>
-          <Checkbox v-model:checked="WZGL10" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="FKGL1" size="medium">库房管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="FKGL2" class="mr-6 w-[150px]" size="medium">新增</Checkbox>
-          <Checkbox v-model:checked="FKGL3" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="FKGL4" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="SJ1" size="medium">数据分析</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[100px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="SJFX1" size="medium">数据分析</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="SJFX2" class="mr-6 w-[150px]" size="medium">财务台账</Checkbox>
-          <Checkbox v-model:checked="SJFX3" class="mr-6 w-[150px]" size="medium">租赁台账</Checkbox>
-          <Checkbox v-model:checked="SJFX4" class="mr-6 w-[150px]" size="medium">欠租欠款</Checkbox>
-          <Checkbox v-model:checked="SJFX5" class="mr-6 w-[150px]" size="medium"
-            >招商数据报表</Checkbox
-          >
-          <Checkbox v-model:checked="SJFX6" class="mr-6 w-[150px]" size="medium"
-            >招商客户画像</Checkbox
-          >
-          <Checkbox v-model:checked="SJFX7" class="mr-6 w-[150px]" size="medium"
-            >配置招商目标</Checkbox
-          >
-          <Checkbox v-model:checked="SJFX8" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="YJGL1" size="medium">业绩管理</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[200px]">
-      <div class="ml-4">
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="YJTZ1" class="mr-6 w-[100px]" size="medium">业绩台账</Checkbox>
-          <Checkbox v-model:checked="YJTZ2" class="mr-6 w-[100px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="YJTZ3" class="mr-6 w-[100px]" size="medium">导出</Checkbox>
-          <Checkbox v-model:checked="YJTZ4" class="mr-6 w-[100px]" size="medium">发放提成</Checkbox>
+            <Checkbox id="addResource" v-model:checked="s2" class="mr-6 w-[150px]" size="medium"
+              >添加资源</Checkbox
+            >
+            <Checkbox id="edit" v-model:checked="s3" class="mr-6 w-[150px]" size="medium"
+              >编辑</Checkbox
+            >
+            <Checkbox id="followUp" v-model:checked="s4" class="mr-6 w-[150px]" size="medium"
+              >跟进</Checkbox
+            >
+            <Checkbox id="assign" v-model:checked="s5" class="mr-6 w-[150px]" size="medium"
+              >指派</Checkbox
+            >
+            <Checkbox id="close" v-model:checked="s6" class="mr-6 w-[150px]" size="medium"
+              >关闭</Checkbox
+            >
+            <Checkbox id="reactivate" v-model:checked="s7" class="mr-6 w-[150px]" size="medium"
+              >重新激活</Checkbox
+            >
+            <Checkbox
+              id="transferToPublic"
+              v-model:checked="s8"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >转入公客</Checkbox
+            >
+            <Checkbox id="shareResource" v-model:checked="s9" class="mr-6 w-[150px]" size="medium"
+              >共享资源</Checkbox
+            >
+            <Checkbox id="delete" v-model:checked="s10" class="mr-6 w-[150px]" size="medium"
+              >删除</Checkbox
+            >
+            <Checkbox id="addReminder" v-model:checked="s11" class="mr-6 w-[150px]" size="medium"
+              >添加提醒</Checkbox
+            >
+          </div>
         </div>
         <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="FFJL1" class="mr-6 w-[100px]" size="medium">发放记录</Checkbox>
-          <Checkbox v-model:checked="FFJL2" class="mr-6 w-[100px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="FFJL3" class="mr-6 w-[100px]" size="medium">导出</Checkbox>
-        </div>
-        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="FYPZ1" class="mr-6 w-[100px]" size="medium">分佣配置</Checkbox>
-          <Checkbox v-model:checked="FYPZ2" class="mr-6 w-[100px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="FYPZ3" class="mr-6 w-[100px]" size="medium">添加</Checkbox>
-          <Checkbox v-model:checked="FYPZ4" class="mr-6 w-[100px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="FYPZ5" class="mr-6 w-[100px]" size="medium">启用禁用</Checkbox>
-        </div>
-        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      </div>
-    </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="XXGG1" size="medium">消息公告</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[60px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="GG1" size="medium">公告</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="GG2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
-          <Checkbox v-model:checked="GG3" class="mr-6 w-[150px]" size="medium">发布</Checkbox>
-          <Checkbox v-model:checked="GG4" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="GG5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="g1" size="medium">租客-公客</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="g2" class="mr-6 w-[150px]" size="medium">添加资源</Checkbox>
+            <Checkbox v-model:checked="g3" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="g4" class="mr-6 w-[150px]" size="medium">抢单</Checkbox>
+            <Checkbox v-model:checked="g5" class="mr-6 w-[150px]" size="medium">跟进</Checkbox>
+            <Checkbox v-model:checked="g6" class="mr-6 w-[150px]" size="medium">指派</Checkbox>
+            <Checkbox v-model:checked="g7" class="mr-6 w-[150px]" size="medium">关闭</Checkbox>
+            <Checkbox v-model:checked="g8" class="mr-6 w-[150px]" size="medium">重新激活</Checkbox>
+            <Checkbox v-model:checked="g9" class="mr-6 w-[150px]" size="medium">共享资源</Checkbox>
+            <Checkbox v-model:checked="g10" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="g11" class="mr-6 w-[150px]" size="medium">添加提醒</Checkbox>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="mt-4">
-    <Checkbox v-model:checked="QY1" size="medium">企业设置</Checkbox>
-    <hr class="mt-4" />
-    <div class="h-[580px]">
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="BM1" size="medium">部门/人员</Checkbox>
+    <div class="mt-4">
+      <Checkbox v-model:checked="Zc1" size="medium">资产管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[300px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="ZC1" size="medium">资产管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[150px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="ZC2" class="mr-6 w-[150px]" size="medium">添加项目</Checkbox>
+            <Checkbox v-model:checked="ZC3" class="mr-6 w-[150px]" size="medium">编辑项目</Checkbox>
+            <Checkbox v-model:checked="ZC4" class="mr-6 w-[150px]" size="medium">删除项目</Checkbox>
+            <Checkbox v-model:checked="ZC5" class="mr-6 w-[150px]" size="medium">关闭房源</Checkbox>
+            <Checkbox v-model:checked="ZC6" class="mr-6 w-[150px]" size="medium">删除房源</Checkbox>
+            <Checkbox v-model:checked="ZC7" class="mr-6 w-[150px]" size="medium"
+              >编辑房源信息</Checkbox
+            >
+            <Checkbox v-model:checked="ZC8" class="mr-6 w-[150px]" size="medium"
+              >变更房源状态</Checkbox
+            >
+            <Checkbox v-model:checked="ZC9" class="mr-6 w-[150px]" size="medium">激活房源</Checkbox>
+            <Checkbox v-model:checked="ZC10" class="mr-6 w-[150px]" size="medium"
+              >房源记录</Checkbox
+            >
+            <Checkbox v-model:checked="ZC11" class="mr-6 w-[150px]" size="medium"
+              >房源价格修改</Checkbox
+            >
+            <Checkbox v-model:checked="ZC12" class="mr-6 w-[150px]" size="medium"
+              >房源价格修改</Checkbox
+            >
+
+            <Checkbox v-model:checked="ZC13" class="mr-6 w-[150px]" size="medium"
+              >配置消息通知</Checkbox
+            >
+            <Checkbox v-model:checked="ZC14" class="mr-6 w-[150px]" size="medium"
+              >修改可租日期</Checkbox
+            >
+            <Checkbox v-model:checked="ZC15" class="mr-6 w-[150px]" size="medium"
+              >锁房/解锁</Checkbox
+            >
+            <Checkbox v-model:checked="ZC16" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+          </div>
         </div>
-        <div class="ml-4 mt-4 flex h-[180px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="BM2" class="mr-6 w-[150px]" size="medium">添加部门</Checkbox>
-          <Checkbox v-model:checked="BM3" class="mr-6 w-[150px]" size="medium">编辑部门</Checkbox>
-          <Checkbox v-model:checked="BM4" class="mr-6 w-[150px]" size="medium">删除部门</Checkbox>
-          <Checkbox v-model:checked="BM5" class="mr-6 w-[150px]" size="medium"
-            >部门数据转移</Checkbox
-          >
-          <Checkbox v-model:checked="BM6" class="mr-6 w-[150px]" size="medium">禁用部门</Checkbox>
-          <Checkbox v-model:checked="BM7" class="mr-6 w-[150px]" size="medium">启用部门</Checkbox>
-          <Checkbox v-model:checked="BM8" class="mr-6 w-[150px]" size="medium">添加部门</Checkbox>
-          <Checkbox v-model:checked="BM9" class="mr-6 w-[150px]" size="medium">编辑员工</Checkbox>
-          <Checkbox v-model:checked="BM10" class="mr-6 w-[150px]" size="medium"
-            >员工数据转移</Checkbox
-          >
-          <Checkbox v-model:checked="BM11" class="mr-6 w-[150px]" size="medium">移动部门</Checkbox>
-          <Checkbox v-model:checked="BM12" class="mr-6 w-[150px]" size="medium">禁用员工</Checkbox>
-          <Checkbox v-model:checked="BM13" class="mr-6 w-[150px]" size="medium">启用员工</Checkbox>
-          <Checkbox v-model:checked="BM14" class="mr-6 w-[150px]" size="medium">删除员工</Checkbox>
-          <Checkbox v-model:checked="BM15" class="mr-6 w-[150px]" size="medium">驳回</Checkbox>
-          <Checkbox v-model:checked="BM16" class="mr-6 w-[150px]" size="medium">通过</Checkbox>
-          <Checkbox v-model:checked="BM17" class="mr-6 w-[150px]" size="medium">分配部门</Checkbox>
-          <Checkbox v-model:checked="BM18" class="mr-6 w-[150px]" size="medium">导入</Checkbox>
-          <Checkbox v-model:checked="BM19" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="KF1" size="medium">空房快查</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+          </div>
         </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="USER1" size="medium">角色/权限</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="USER2" class="mr-6 w-[150px]" size="medium">添加角色</Checkbox>
-          <Checkbox v-model:checked="USER3" class="mr-6 w-[150px]" size="medium">编辑角色</Checkbox>
-          <Checkbox v-model:checked="USER4" class="mr-6 w-[150px]" size="medium">删除角色</Checkbox>
-          <Checkbox v-model:checked="USER5" class="mr-6 w-[150px]" size="medium">设置权限</Checkbox>
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="CPPZ1" size="medium">产品配置</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="CPPZ2" class="mr-6 w-[150px]" size="medium"
-            >微信小程序</Checkbox
-          >
-        </div>
-      </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="ZDGL1" size="medium">字典管理</Checkbox>
-        </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="ZDGL2" class="mr-6 w-[150px]" size="medium">添加字典</Checkbox>
-          <Checkbox v-model:checked="ZDGL3" class="mr-6 w-[150px]" size="medium">编辑字典</Checkbox>
-          <Checkbox v-model:checked="ZDGL4" class="mr-6 w-[150px]" size="medium">删除字典</Checkbox>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="TJ1" size="medium">调价管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="TJ2" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
+            <Checkbox v-model:checked="TJ3" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="TJ4" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
+          </div>
         </div>
       </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="YY1" size="medium">运营配置</Checkbox>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="HY1" size="medium">合约管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[530px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="YD1" size="medium">预定管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[150px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="YD2" class="mr-6 w-[150px]" size="medium">添加预定</Checkbox>
+            <Checkbox v-model:checked="YD3" class="mr-6 w-[150px]" size="medium">退定</Checkbox>
+            <Checkbox v-model:checked="YD4" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
+            <Checkbox v-model:checked="YD5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="YD6" class="mr-6 w-[150px]" size="medium">关联房源</Checkbox>
+            <Checkbox v-model:checked="YD7" class="mr-6 w-[150px]" size="medium"
+              >查看租客电话</Checkbox
+            >
+            <Checkbox v-model:checked="YD8" class="mr-6 w-[150px]" size="medium"
+              >邀请租客支付</Checkbox
+            >
+            <Checkbox v-model:checked="YD9" class="mr-6 w-[150px]" size="medium"
+              >变更预定房源</Checkbox
+            >
+            <Checkbox v-model:checked="YD10" class="mr-6 w-[150px]" size="medium"
+              >还原定金</Checkbox
+            >
+            <Checkbox v-model:checked="YD11" class="mr-6 w-[150px]" size="medium"
+              >邀请签字</Checkbox
+            >
+            <Checkbox v-model:checked="YD12" class="mr-6 w-[150px]" size="medium"
+              >修改预定信息</Checkbox
+            >
+
+            <Checkbox v-model:checked="YD13" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+          </div>
         </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="YY2" class="mr-6 w-[150px]" size="medium">设置决策</Checkbox>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="PD1" size="medium">排队管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="PD2" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
+            <Checkbox v-model:checked="PD3" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="PD4" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="ZK1" size="medium">租客合同</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[200px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="ZK2" class="mr-6 w-[150px]" size="medium">添加合同</Checkbox>
+
+            <Checkbox v-model:checked="ZK3" class="mr-6 w-[150px]" size="medium">邀请签字</Checkbox>
+            <Checkbox v-model:checked="ZK4" class="mr-6 w-[150px]" size="medium">续签</Checkbox>
+            <Checkbox v-model:checked="ZK5" class="mr-6 w-[150px]" size="medium"
+              >退租-并结账</Checkbox
+            >
+            <Checkbox v-model:checked="ZK6" class="mr-6 w-[150px]" size="medium">重置</Checkbox>
+            <Checkbox v-model:checked="ZK7" class="mr-6 w-[150px]" size="medium"
+              >退租-后结账</Checkbox
+            >
+            <Checkbox v-model:checked="ZK8" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
+            <Checkbox v-model:checked="ZK9" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="ZK10" class="mr-6 w-[150px]" size="medium"
+              >关联房源</Checkbox
+            >
+            <Checkbox v-model:checked="ZK11" class="mr-6 w-[150px]" size="medium"
+              >修改退租信息</Checkbox
+            >
+            <Checkbox v-model:checked="ZK12" class="mr-6 w-[150px]" size="medium"
+              >退租还原</Checkbox
+            >
+            <Checkbox v-model:checked="ZK13" class="mr-6 w-[150px]" size="medium"
+              >邀请确认</Checkbox
+            >
+            <Checkbox v-model:checked="ZK14" class="mr-6 w-[150px]" size="medium"
+              >查看租客电话</Checkbox
+            >
+            <Checkbox v-model:checked="ZK15" class="mr-6 w-[150px]" size="medium"
+              >编辑物业交割单</Checkbox
+            >
+            <Checkbox v-model:checked="ZK16" class="mr-6 w-[150px]" size="medium">换房</Checkbox>
+            <Checkbox v-model:checked="ZK17" class="mr-6 w-[150px]" size="medium"
+              >修改合同信息</Checkbox
+            >
+            <Checkbox v-model:checked="ZK18" class="mr-6 w-[150px]" size="medium">跟进</Checkbox>
+            <Checkbox v-model:checked="ZK19" class="mr-6 w-[150px]" size="medium"
+              >预览/打印</Checkbox
+            >
+            <Checkbox v-model:checked="ZK20" class="mr-6 w-[150px]" size="medium"
+              >修改签约人信息</Checkbox
+            >
+            <Checkbox v-model:checked="ZK21" class="mr-6 w-[150px]" size="medium"
+              >修改同住人信息</Checkbox
+            >
+            <Checkbox v-model:checked="ZK22" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+            <Checkbox v-model:checked="ZK23" class="mr-6 w-[150px]" size="medium">导入</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="HT1" size="medium">合同配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+          </div>
         </div>
       </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="SK1" size="medium">收款账号配置</Checkbox>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="CW1" size="medium">财务管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[630px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="ZD1" size="medium">账单管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[150px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="ZD2" class="mr-6 w-[150px]" size="medium"
+              >查看其他账单</Checkbox
+            >
+            <Checkbox v-model:checked="ZD3" class="mr-6 w-[150px]" size="medium"
+              >查看房源账单</Checkbox
+            >
+            <Checkbox v-model:checked="ZD4" class="mr-6 w-[150px]" size="medium"
+              >查看租客账单</Checkbox
+            >
+            <Checkbox v-model:checked="ZD5" class="mr-6 w-[150px]" size="medium"
+              >查看业主账单</Checkbox
+            >
+            <Checkbox v-model:checked="ZD6" class="mr-6 w-[150px]" size="medium">添加账单</Checkbox>
+            <Checkbox v-model:checked="ZD7" class="mr-6 w-[150px]" size="medium">编辑账单</Checkbox>
+            <Checkbox v-model:checked="ZD8" class="mr-6 w-[150px]" size="medium"
+              >付款/付款申请</Checkbox
+            >
+            <Checkbox v-model:checked="ZD9" class="mr-6 w-[150px]" size="medium">收款</Checkbox>
+            <Checkbox v-model:checked="ZD10" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
+            <Checkbox v-model:checked="ZD11" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="ZD12" class="mr-6 w-[150px]" size="medium"
+              >关联房源</Checkbox
+            >
+            <Checkbox v-model:checked="ZD13" class="mr-6 w-[150px]" size="medium"
+              >关联租客</Checkbox
+            >
+            <Checkbox v-model:checked="ZD14" class="mr-6 w-[150px]" size="medium"
+              >关联业主</Checkbox
+            >
+            <Checkbox v-model:checked="ZD15" class="mr-6 w-[150px]" size="medium">催收</Checkbox>
+            <Checkbox v-model:checked="ZD16" class="mr-6 w-[150px]" size="medium">打印</Checkbox>
+            <Checkbox v-model:checked="ZD17" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+            <Checkbox v-model:checked="ZD18" class="mr-6 w-[150px]" size="medium"
+              >账单复原</Checkbox
+            >
+            <Checkbox v-model:checked="ZD19" class="mr-6 w-[150px]" size="medium"
+              >导入水电费</Checkbox
+            >
+            <Checkbox v-model:checked="ZD20" class="mr-6 w-[150px]" size="medium"
+              >报销同步</Checkbox
+            >
+            <Checkbox v-model:checked="ZD21" class="mr-6 w-[150px]" size="medium"
+              >拆分同步</Checkbox
+            >
+            <Checkbox v-model:checked="ZD22" class="mr-6 w-[150px]" size="medium"
+              >拆分账单</Checkbox
+            >
+            <Checkbox v-model:checked="ZD23" class="mr-6 w-[150px]" size="medium"
+              >申请开票</Checkbox
+            >
+            <Checkbox v-model:checked="ZD24" class="mr-6 w-[150px]" size="medium">导入</Checkbox>
+            <Checkbox v-model:checked="ZD25" class="mr-6 w-[150px]" size="medium"
+              >编辑标签</Checkbox
+            >
+          </div>
         </div>
-        <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="SK2" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
-          <Checkbox v-model:checked="SK3" class="mr-6 w-[150px]" size="medium">启用</Checkbox>
-          <Checkbox v-model:checked="SK4" class="mr-6 w-[150px]" size="medium">禁用</Checkbox>
-          <Checkbox v-model:checked="SK5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="SK6" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
-          <Checkbox v-model:checked="SK7" class="mr-6 w-[150px]" size="medium">分账设置</Checkbox>
-          <Checkbox v-model:checked="SK8" class="mr-6 w-[150px]" size="medium">修改手续费</Checkbox>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="ZDLS1" size="medium">账单流水</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="ZDLS2" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
+            <Checkbox v-model:checked="ZDLS3" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="ZDLS4" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+            <Checkbox v-model:checked="ZDLS5" class="mr-6 w-[150px]" size="medium"
+              >补录备注/附件</Checkbox
+            >
+            <Checkbox v-model:checked="ZDLS6" class="mr-6 w-[150px]" size="medium">打印</Checkbox>
+            <Checkbox v-model:checked="ZDLS7" class="mr-6 w-[150px]" size="medium"
+              >申请开票</Checkbox
+            >
+            <Checkbox v-model:checked="ZDLS8" class="mr-6 w-[150px]" size="medium">锁票</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="WZK1" size="medium">未知款</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="WZK2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="WZK3" class="mr-6 w-[150px]" size="medium"
+              >添加未知款</Checkbox
+            >
+            <Checkbox v-model:checked="WZK4" class="mr-6 w-[150px]" size="medium"
+              >关联流水</Checkbox
+            >
+            <Checkbox v-model:checked="WZK5" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="WZK6" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
+            <Checkbox v-model:checked="WZK7" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="HZZK1" size="medium">租客转账通知</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="HZZK2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="HZZK3" class="mr-6 w-[150px]" size="medium"
+              >审核通过</Checkbox
+            >
+            <Checkbox v-model:checked="HZZK4" class="mr-6 w-[150px]" size="medium"
+              >审核驳回</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[60px] w-[150px]">
+            <Checkbox v-model:checked="KP1" size="medium">开票记录</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="KP2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="KP3" class="mr-6 w-[150px]" size="medium">申请开票</Checkbox>
+            <Checkbox v-model:checked="KP4" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="KP5" class="mr-6 w-[150px]" size="medium">确认开票</Checkbox>
+            <Checkbox v-model:checked="KP6" class="mr-6 w-[150px]" size="medium">拒接开票</Checkbox>
+            <Checkbox v-model:checked="KP7" class="mr-6 w-[150px]" size="medium">冲红</Checkbox>
+            <Checkbox v-model:checked="KP8" class="mr-6 w-[150px]" size="medium">作废</Checkbox>
+            <Checkbox v-model:checked="KP9" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="KP10" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+            <Checkbox v-model:checked="KP11" class="mr-6 w-[150px]" size="medium"
+              >重新开票</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="KPZH1" size="medium">开票账号配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="KPZH2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="KPZH3" class="mr-6 w-[150px]" size="medium"
+              >添加开票主体</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH4" class="mr-6 w-[150px]" size="medium"
+              >启用主体</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH5" class="mr-6 w-[150px]" size="medium"
+              >禁用主体</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH6" class="mr-6 w-[150px]" size="medium"
+              >编辑主体</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH7" class="mr-6 w-[150px]" size="medium"
+              >删除主体</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH8" class="mr-6 w-[150px]" size="medium"
+              >关联账号</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH9" class="mr-6 w-[150px]" size="medium"
+              >解绑账号</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH10" class="mr-6 w-[150px]" size="medium"
+              >添加商品</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH11" class="mr-6 w-[150px]" size="medium"
+              >启用商品</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH12" class="mr-6 w-[150px]" size="medium"
+              >禁用商品</Checkbox
+            >
+            <Checkbox v-model:checked="KPZH13" class="mr-6 w-[150px]" size="medium"
+              >删除商品</Checkbox
+            >
+          </div>
         </div>
       </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="SPPZ1" size="medium">审批配置</Checkbox>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="ZH1" size="medium">租后管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[350px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="QT1" size="medium">其他工单</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="QT2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="QT3" class="mr-6 w-[150px]" size="medium">添加工单</Checkbox>
+            <Checkbox v-model:checked="QT4" class="mr-6 w-[150px]" size="medium">编辑工单</Checkbox>
+            <Checkbox v-model:checked="QT5" class="mr-6 w-[150px]" size="medium">派单</Checkbox>
+            <Checkbox v-model:checked="QT6" class="mr-6 w-[150px]" size="medium">改派</Checkbox>
+            <Checkbox v-model:checked="QT7" class="mr-6 w-[150px]" size="medium">完成</Checkbox>
+            <Checkbox v-model:checked="QT8" class="mr-6 w-[150px]" size="medium">验收工单</Checkbox>
+            <Checkbox v-model:checked="QT9" class="mr-6 w-[150px]" size="medium">取消工单</Checkbox>
+            <Checkbox v-model:checked="QT10" class="mr-6 w-[150px]" size="medium"
+              >评价工单</Checkbox
+            >
+            <Checkbox v-model:checked="QT11" class="mr-6 w-[150px]" size="medium"
+              >删除工单</Checkbox
+            >
+            <Checkbox v-model:checked="QT12" class="mr-6 w-[150px]" size="medium"
+              >关联房源</Checkbox
+            >
+          </div>
         </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox
-            v-model:checked="checked"
-            :disabled="disabled"
-            class="mr-6 w-[150px]"
-            size="medium"
-            >查看</Checkbox
-          >
-          <Checkbox v-model:checked="SPPZ2" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
-          <Checkbox v-model:checked="SPPZ3" class="mr-6 w-[150px]" size="medium">启用</Checkbox>
-          <Checkbox v-model:checked="SPPZ4" class="mr-6 w-[150px]" size="medium">禁用</Checkbox>
-          <Checkbox v-model:checked="SPPZ5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
-          <Checkbox v-model:checked="SPPZ6" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="HF1" size="medium">换房申请</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="HF2" class="mr-6 w-[150px]" size="medium">申请通过</Checkbox>
+            <Checkbox v-model:checked="HF3" class="mr-6 w-[150px]" size="medium">申请驳回</Checkbox>
+            <Checkbox v-model:checked="HF4" class="mr-6 w-[150px]" size="medium">办理退房</Checkbox>
+            <Checkbox v-model:checked="HF5" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
+            <Checkbox v-model:checked="HF6" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="TF1" size="medium">退房申请</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="TF2" class="mr-6 w-[150px]" size="medium">申请通过</Checkbox>
+            <Checkbox v-model:checked="TF3" class="mr-6 w-[150px]" size="medium">申请驳回</Checkbox>
+            <Checkbox v-model:checked="TF4" class="mr-6 w-[150px]" size="medium">办理退房</Checkbox>
+            <Checkbox v-model:checked="TF5" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
+            <Checkbox v-model:checked="TF6" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="XZ1" size="medium">续租记录</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="XZ2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="XZ3" class="mr-6 w-[150px]" size="medium">申请通过</Checkbox>
+            <Checkbox v-model:checked="XZ4" class="mr-6 w-[150px]" size="medium">申请驳回</Checkbox>
+            <Checkbox v-model:checked="XZ5" class="mr-6 w-[150px]" size="medium">办理退房</Checkbox>
+            <Checkbox v-model:checked="XZ6" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
+            <Checkbox v-model:checked="XZ7" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+          </div>
         </div>
       </div>
-      <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
-      <div class="ml-4 flex">
-        <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
-          <Checkbox v-model:checked="GXH1" size="medium">个性化配置</Checkbox>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="YX1" size="medium">营销推广</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[480px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="FY1" size="medium">房源推广</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="FY2" class="mr-6 w-[150px]" size="medium">上架</Checkbox>
+            <Checkbox v-model:checked="FY3" class="mr-6 w-[150px]" size="medium">下架</Checkbox>
+            <Checkbox v-model:checked="FY4" class="mr-6 w-[150px]" size="medium"
+              >上/下架历史记录</Checkbox
+            >
+            <Checkbox v-model:checked="FY5" class="mr-6 w-[150px]" size="medium"
+              >批量标记验真</Checkbox
+            >
+          </div>
         </div>
-        <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
-          <Checkbox v-model:checked="GXH2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="TG1" size="medium">推广配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="TG2" class="mr-6 w-[150px]" size="medium">绑定账号</Checkbox>
+            <Checkbox v-model:checked="TG3" class="mr-6 w-[150px]" size="medium">解除账号</Checkbox>
+            <Checkbox v-model:checked="TG4" class="mr-6 w-[150px]" size="medium">管理管家</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="YXZH1" size="medium">营销账户</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="YXZH2" class="mr-6 w-[150px]" size="medium"
+              >充值保证金</Checkbox
+            >
+            <Checkbox v-model:checked="YXZH3" class="mr-6 w-[150px]" size="medium"
+              >充值小牛币</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="YC1" size="medium">异常申报记录</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="YC2" class="mr-6 w-[150px]" size="medium">异常申报</Checkbox>
+            <Checkbox v-model:checked="YC3" class="mr-6 w-[150px]" size="medium">取消</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="YH1" size="medium">优惠卷管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="YH2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="YH3" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
+            <Checkbox v-model:checked="YH4" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="YH5" class="mr-6 w-[150px]" size="medium">启用</Checkbox>
+            <Checkbox v-model:checked="YH6" class="mr-6 w-[150px]" size="medium">分享</Checkbox>
+            <Checkbox v-model:checked="YH7" class="mr-6 w-[150px]" size="medium">置为无效</Checkbox>
+            <Checkbox v-model:checked="YH8" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="YHQ1" size="medium">优惠券使用明细</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="YHQ2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="YHQ3" class="mr-6 w-[150px]" size="medium"
+              >查看租客电话</Checkbox
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="QB1" size="medium">钱包</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[100px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="QBGL1" size="medium">钱包管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="QBGL2" class="mr-6 w-[150px]" size="medium"
+              >查看所有</Checkbox
+            >
+            <Checkbox v-model:checked="QBGL3" class="mr-6 w-[150px]" size="medium"
+              >开通钱包</Checkbox
+            >
+            <Checkbox v-model:checked="QBGL4" class="mr-6 w-[150px]" size="medium"
+              >修改钱包名称</Checkbox
+            >
+            <Checkbox v-model:checked="QBGL5" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="SPGL1" size="medium">审批管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[300px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="DSP1" size="medium">待我审批的</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="YSP1" size="medium">我已审批的</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="FQWD1" size="medium">我发起的</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="CSWD1" size="medium">抄送我的</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="WZ1" size="medium">物资管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[180px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="WZGL1" size="medium">物资管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="WZGL2" class="mr-6 w-[150px]" size="medium"
+              >添加物品</Checkbox
+            >
+            <Checkbox v-model:checked="WZGL3" class="mr-6 w-[150px]" size="medium"
+              >编辑物品</Checkbox
+            >
+            <Checkbox v-model:checked="WZGL4" class="mr-6 w-[150px]" size="medium">调配</Checkbox>
+            <Checkbox v-model:checked="WZGL5" class="mr-6 w-[150px]" size="medium">报废</Checkbox>
+            <Checkbox v-model:checked="WZGL6" class="mr-6 w-[150px]" size="medium">遗失</Checkbox>
+            <Checkbox v-model:checked="WZGL7" class="mr-6 w-[150px]" size="medium"
+              >修改状态</Checkbox
+            >
+            <Checkbox v-model:checked="WZGL8" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="WZGL9" class="mr-6 w-[150px]" size="medium"
+              >核对信息</Checkbox
+            >
+            <Checkbox v-model:checked="WZGL10" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="FKGL1" size="medium">库房管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="FKGL2" class="mr-6 w-[150px]" size="medium">新增</Checkbox>
+            <Checkbox v-model:checked="FKGL3" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="FKGL4" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="SJ1" size="medium">数据分析</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[100px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="SJFX1" size="medium">数据分析</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="SJFX2" class="mr-6 w-[150px]" size="medium"
+              >财务台账</Checkbox
+            >
+            <Checkbox v-model:checked="SJFX3" class="mr-6 w-[150px]" size="medium"
+              >租赁台账</Checkbox
+            >
+            <Checkbox v-model:checked="SJFX4" class="mr-6 w-[150px]" size="medium"
+              >欠租欠款</Checkbox
+            >
+            <Checkbox v-model:checked="SJFX5" class="mr-6 w-[150px]" size="medium"
+              >招商数据报表</Checkbox
+            >
+            <Checkbox v-model:checked="SJFX6" class="mr-6 w-[150px]" size="medium"
+              >招商客户画像</Checkbox
+            >
+            <Checkbox v-model:checked="SJFX7" class="mr-6 w-[150px]" size="medium"
+              >配置招商目标</Checkbox
+            >
+            <Checkbox v-model:checked="SJFX8" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="YJGL1" size="medium">业绩管理</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[200px]">
+        <div class="ml-4">
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="YJTZ1" class="mr-6 w-[100px]" size="medium"
+              >业绩台账</Checkbox
+            >
+            <Checkbox v-model:checked="YJTZ2" class="mr-6 w-[100px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="YJTZ3" class="mr-6 w-[100px]" size="medium">导出</Checkbox>
+            <Checkbox v-model:checked="YJTZ4" class="mr-6 w-[100px]" size="medium"
+              >发放提成</Checkbox
+            >
+          </div>
+          <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="FFJL1" class="mr-6 w-[100px]" size="medium"
+              >发放记录</Checkbox
+            >
+            <Checkbox v-model:checked="FFJL2" class="mr-6 w-[100px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="FFJL3" class="mr-6 w-[100px]" size="medium">导出</Checkbox>
+          </div>
+          <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="FYPZ1" class="mr-6 w-[100px]" size="medium"
+              >分佣配置</Checkbox
+            >
+            <Checkbox v-model:checked="FYPZ2" class="mr-6 w-[100px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="FYPZ3" class="mr-6 w-[100px]" size="medium">添加</Checkbox>
+            <Checkbox v-model:checked="FYPZ4" class="mr-6 w-[100px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="FYPZ5" class="mr-6 w-[100px]" size="medium"
+              >启用禁用</Checkbox
+            >
+          </div>
+          <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="XXGG1" size="medium">消息公告</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[60px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="GG1" size="medium">公告</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="GG2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+            <Checkbox v-model:checked="GG3" class="mr-6 w-[150px]" size="medium">发布</Checkbox>
+            <Checkbox v-model:checked="GG4" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="GG5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <Checkbox v-model:checked="QY1" size="medium">企业设置</Checkbox>
+      <hr class="mt-4" />
+      <div class="h-[580px]">
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="BM1" size="medium">部门/人员</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[180px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="BM2" class="mr-6 w-[150px]" size="medium">添加部门</Checkbox>
+            <Checkbox v-model:checked="BM3" class="mr-6 w-[150px]" size="medium">编辑部门</Checkbox>
+            <Checkbox v-model:checked="BM4" class="mr-6 w-[150px]" size="medium">删除部门</Checkbox>
+            <Checkbox v-model:checked="BM5" class="mr-6 w-[150px]" size="medium"
+              >部门数据转移</Checkbox
+            >
+            <Checkbox v-model:checked="BM6" class="mr-6 w-[150px]" size="medium">禁用部门</Checkbox>
+            <Checkbox v-model:checked="BM7" class="mr-6 w-[150px]" size="medium">启用部门</Checkbox>
+            <Checkbox v-model:checked="BM8" class="mr-6 w-[150px]" size="medium">添加部门</Checkbox>
+            <Checkbox v-model:checked="BM9" class="mr-6 w-[150px]" size="medium">编辑员工</Checkbox>
+            <Checkbox v-model:checked="BM10" class="mr-6 w-[150px]" size="medium"
+              >员工数据转移</Checkbox
+            >
+            <Checkbox v-model:checked="BM11" class="mr-6 w-[150px]" size="medium"
+              >移动部门</Checkbox
+            >
+            <Checkbox v-model:checked="BM12" class="mr-6 w-[150px]" size="medium"
+              >禁用员工</Checkbox
+            >
+            <Checkbox v-model:checked="BM13" class="mr-6 w-[150px]" size="medium"
+              >启用员工</Checkbox
+            >
+            <Checkbox v-model:checked="BM14" class="mr-6 w-[150px]" size="medium"
+              >删除员工</Checkbox
+            >
+            <Checkbox v-model:checked="BM15" class="mr-6 w-[150px]" size="medium">驳回</Checkbox>
+            <Checkbox v-model:checked="BM16" class="mr-6 w-[150px]" size="medium">通过</Checkbox>
+            <Checkbox v-model:checked="BM17" class="mr-6 w-[150px]" size="medium"
+              >分配部门</Checkbox
+            >
+            <Checkbox v-model:checked="BM18" class="mr-6 w-[150px]" size="medium">导入</Checkbox>
+            <Checkbox v-model:checked="BM19" class="mr-6 w-[150px]" size="medium">导出</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="USER1" size="medium">角色/权限</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="USER2" class="mr-6 w-[150px]" size="medium"
+              >添加角色</Checkbox
+            >
+            <Checkbox v-model:checked="USER3" class="mr-6 w-[150px]" size="medium"
+              >编辑角色</Checkbox
+            >
+            <Checkbox v-model:checked="USER4" class="mr-6 w-[150px]" size="medium"
+              >删除角色</Checkbox
+            >
+            <Checkbox v-model:checked="USER5" class="mr-6 w-[150px]" size="medium"
+              >设置权限</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="CPPZ1" size="medium">产品配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="CPPZ2" class="mr-6 w-[150px]" size="medium"
+              >微信小程序</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="ZDGL1" size="medium">字典管理</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="ZDGL2" class="mr-6 w-[150px]" size="medium"
+              >添加字典</Checkbox
+            >
+            <Checkbox v-model:checked="ZDGL3" class="mr-6 w-[150px]" size="medium"
+              >编辑字典</Checkbox
+            >
+            <Checkbox v-model:checked="ZDGL4" class="mr-6 w-[150px]" size="medium"
+              >删除字典</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="YY1" size="medium">运营配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="YY2" class="mr-6 w-[150px]" size="medium">设置决策</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="SK1" size="medium">收款账号配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[100px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="SK2" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
+            <Checkbox v-model:checked="SK3" class="mr-6 w-[150px]" size="medium">启用</Checkbox>
+            <Checkbox v-model:checked="SK4" class="mr-6 w-[150px]" size="medium">禁用</Checkbox>
+            <Checkbox v-model:checked="SK5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="SK6" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+            <Checkbox v-model:checked="SK7" class="mr-6 w-[150px]" size="medium">分账设置</Checkbox>
+            <Checkbox v-model:checked="SK8" class="mr-6 w-[150px]" size="medium"
+              >修改手续费</Checkbox
+            >
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="SPPZ1" size="medium">审批配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox
+              v-model:checked="checked"
+              :disabled="disabled"
+              class="mr-6 w-[150px]"
+              size="medium"
+              >查看</Checkbox
+            >
+            <Checkbox v-model:checked="SPPZ2" class="mr-6 w-[150px]" size="medium">添加</Checkbox>
+            <Checkbox v-model:checked="SPPZ3" class="mr-6 w-[150px]" size="medium">启用</Checkbox>
+            <Checkbox v-model:checked="SPPZ4" class="mr-6 w-[150px]" size="medium">禁用</Checkbox>
+            <Checkbox v-model:checked="SPPZ5" class="mr-6 w-[150px]" size="medium">删除</Checkbox>
+            <Checkbox v-model:checked="SPPZ6" class="mr-6 w-[150px]" size="medium">编辑</Checkbox>
+          </div>
+        </div>
+        <hr class="ml-8" style="border: 0.5px dashed #e0e0e0" />
+        <div class="ml-4 flex">
+          <div class="ml-4 mr-4 mt-4 h-[40px] w-[150px]">
+            <Checkbox v-model:checked="GXH1" size="medium">个性化配置</Checkbox>
+          </div>
+          <div class="ml-4 mt-4 flex h-[50px] w-[1100px] flex-wrap">
+            <Checkbox v-model:checked="GXH2" class="mr-6 w-[150px]" size="medium">查看</Checkbox>
+          </div>
         </div>
       </div>
     </div>

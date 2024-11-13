@@ -60,7 +60,7 @@
       </Col>
 
       <Col :lg="{ span: 19 }" class="w-[500px] h-[60vw] overflow-y-auto">
-        <div class="bg-red-100 h-full rounded-lg">
+        <div class=" h-full rounded-lg">
           <Card>
             <div class="flex justify-between items-center mt-2">
               <Tabs v-model:activeKey="activeKey" @change="onTabChange">
