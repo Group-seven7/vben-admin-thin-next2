@@ -1,5 +1,6 @@
 <!--合约管理-->
 <template>
+  <PageWrapper class="overflow-y-auto h-75vh border border-gray-300">
   <header class="flex items-center px-4 py-2 border-b">
     <!-- 左侧选择框 -->
     <div class="flex justify-start mr-4">
@@ -438,10 +439,12 @@
       </div>
     </div>
   </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue';
+   import { PageWrapper } from '/@/components/Page';
   import { Select, Tabs } from 'ant-design-vue';
   const select = ref(null);
   const value1 = ref('E+SPACE');

@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <PageWrapper class="overflow-y-auto h-75vh border border-gray-300">
     <!-- 对话框 -->
     <Modal
       v-model:visible="isVisible"

@@ -1,6 +1,6 @@
 <!--招商客户-->
 <template>
-  <PageWrapper>
+  <PageWrapper class="overflow-y-auto h-75vh border border-gray-300">
     <nav class="flex flex-col w-full justify-between">
       <div
         v-for="(title, index) in Asstitle"

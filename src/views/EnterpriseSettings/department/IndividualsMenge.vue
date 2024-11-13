@@ -79,7 +79,7 @@
         </div>
       </Col>
       <Col :lg="{ span: 19 }" style="height: 80vh">
-        <div class="bg-red-100 h-full rounded-lg">
+        <div class=" h-full rounded-lg">
           <Card>
             <template #title>成员管理</template>
             <template #extra>
