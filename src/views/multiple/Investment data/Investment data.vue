@@ -5,31 +5,43 @@
         <div v-if="activeKey === '1'" class="chart-container">
           <div class="pie-chart-container">
             <h1>项目各自出租率对比</h1>
-            <PieChart />
+            <PieChart />  <!-- 使用实际的饼图组件 -->
           </div>
           <div class="line-chart-container">
-            <LineChart />
+            <LineChart />  <!-- 使用实际的线状图组件 -->
           </div>
         </div>
       </a-tab-pane>
       <a-tab-pane key="2" tab="数据" force-render>
-        <div v-if="showSelect" class="select-wrapper">
-          <span class="select-label">项目：</span>
-          <a-select
-            v-model:value="value"
-            style="width: 120px;"
-            :options="items"
-            @change="handleSelectChange"
-          >
-          </a-select>
+        <div v-if="activeKey === '2'" class="data-table-wrapper">
+          <div class="select-wrapper" v-if="showSelect">
+            <span class="select-label">指定统计周期：</span>
+            <a-radio-group v-model="selectedTimeFrame">
+              <a-radio value="this_week">本周</a-radio>
+              <a-radio value="this_month">本月</a-radio>
+              <a-radio value="this_year">本年</a-radio>
+            </a-radio-group>
+            <a-date-picker
+              v-model="selectedDate"
+              style="margin-left: 8px;"
+              placeholder="选择日期"
+              format="YYYY-MM-DD"
+            />
+            <span class="select-label">项目：</span>
+            <a-select
+              v-model:value="value"
+              style="width: 120px;"
+              :options="items"
+              @change="handleSelectChange"
+            />
+          </div>
+          <a-table 
+            :columns="columns" 
+            :data-source="filteredTableData" 
+            :scroll="{ x: 1500, y: 300 }" 
+            class="data-table">
+          </a-table>
         </div>
-        <a-table 
-          v-if="activeKey === '2'" 
-          :columns="columns" 
-          :data-source="filteredTableData" 
-          :scroll="{ x: 1500, y: 300 }" 
-          class="data-table">
-        </a-table>
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -37,9 +49,9 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
-import { Tabs, Table, Select } from 'ant-design-vue';
-import PieChart from './PieChart.vue'; // 根据实际路径引入
-import LineChart from './LineChart.vue'; // 引入更新后的线状图组件
+import { Tabs, Table, Select, Radio, DatePicker } from 'ant-design-vue';
+import PieChart from './PieChart.vue'; // 根据实际路径引入饼图组件
+import LineChart from './LineChart.vue'; // 根据实际路径引入线状图组件
 import type { TableColumnsType } from 'ant-design-vue';
 
 export default defineComponent({
@@ -47,17 +59,28 @@ export default defineComponent({
     'a-tabs': Tabs,
     'a-table': Table,
     'a-select': Select,
+    'a-radio-group': Radio.Group,
+    'a-radio': Radio,
+    'a-date-picker': DatePicker,
     PieChart, // 引入饼图组件
-    LineChart, // 引入更新后的线状图组件
+    LineChart, // 引入线状图组件
   },
   setup() {
     const activeKey = ref('1');
-    const showSelect = ref(false); // 控制选择器的显示
+    const showSelect = ref(true); // 控制选择器的显示
+
+    const selectedTimeFrame = ref('this_week'); // 存储时间选择
+    const selectedDate = ref(null); // 存储日期选择
 
     const columns: TableColumnsType = [
       { title: '序号', width: 100, dataIndex: 'key', key: 'key', fixed: 'left' },
       { title: '项目名称', width: 80, dataIndex: 'name', key: 'name', fixed: 'left' },
-      // 其他列...
+      { title: '项目地址', dataIndex: 'address', key: '1', width: 150 },
+      { title: '出租率', dataIndex: 'address', key: '2', width: 150 },
+      { title: '退租率', dataIndex: 'address', key: '3', width: 150 },
+      { title: '新增签约面积', dataIndex: 'address', key: '3', width: 150 },
+      { title: '退新增续租面积', dataIndex: 'address', key: '3', width: 150 },
+      { title: '新增退租面积', dataIndex: 'address', key: '3', width: 150 },
       {
         title: '解除合同时间',
         key: 'operation',
@@ -122,6 +145,8 @@ export default defineComponent({
       filteredTableData,
       items,
       value,
+      selectedTimeFrame,
+      selectedDate,
       handleSelectChange,
       handleTabChange,
     };
@@ -149,7 +174,7 @@ export default defineComponent({
 
 .data-table {
   margin-top: 16px; /* 表格与顶部的间距 */
-  width: 100%; /* 设置表格宽度为100% */
+  width: 15%; /* 设置表格宽度为100% */
   overflow-x: auto; /* 水平滚动 */
 }
 
@@ -161,11 +186,10 @@ export default defineComponent({
 }
 
 .select-wrapper {
-  position: absolute;
-  right: 8px;
-  top: 8px;
+  position: relative;
   display: flex;
   align-items: center;
+  margin-bottom: 16px; /* 为选择器和表格之间添加间距 */
 }
 
 .select-label {

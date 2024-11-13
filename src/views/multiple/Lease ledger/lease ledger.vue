@@ -5,31 +5,32 @@
         <div v-if="activeKey === '1'" class="chart-container">
           <div class="pie-chart-container">
             <h1>项目各自出租率对比</h1>
-            <PieChart />
+            <PieChart class="responsive-pie-chart" />
           </div>
           <div class="line-chart-container">
+            <h1>项目租金趋势</h1>
             <LineChart />
           </div>
         </div>
       </a-tab-pane>
       <a-tab-pane key="2" tab="数据" force-render>
-        <div v-if="showSelect" class="select-wrapper">
-          <span class="select-label">项目：</span>
-          <a-select
-            v-model:value="value"
-            style="width: 120px;"
-            :options="items"
-            @change="handleSelectChange"
-          >
-          </a-select>
+        <div v-if="activeKey === '2'" class="data-table-wrapper">
+          <div class="select-wrapper">
+            <span class="select-label">项目：</span>
+            <a-select
+              v-model:value="value"
+              style="width: 120px;"
+              :options="items"
+              @change="handleSelectChange"
+            />
+          </div>
+          <a-table 
+            :columns="columns" 
+            :data-source="filteredTableData" 
+            :scroll="{ x: 1500, y: 300 }" 
+            class="data-table">
+          </a-table>
         </div>
-        <a-table 
-          v-if="activeKey === '2'" 
-          :columns="columns" 
-          :data-source="filteredTableData" 
-          :scroll="{ x: 1500, y: 300 }" 
-          class="data-table">
-        </a-table>
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -47,8 +48,8 @@ export default defineComponent({
     'a-tabs': Tabs,
     'a-table': Table,
     'a-select': Select,
-    PieChart, // 引入饼图组件
-    LineChart, // 引入折线图组件
+    PieChart,
+    LineChart,
   },
   setup() {
     const activeKey = ref('1');
@@ -57,7 +58,7 @@ export default defineComponent({
     const columns: TableColumnsType = [
       { title: '序号', width: 100, dataIndex: 'key', key: 'key', fixed: 'left' },
       { title: '项目名称', width: 80, dataIndex: 'name', key: 'name', fixed: 'left' },
-      // 其他列...
+      // 其他列既可继续添加 ...
       {
         title: '解除合同时间',
         key: 'operation',
@@ -137,8 +138,15 @@ export default defineComponent({
 }
 
 .pie-chart-container {
-  width: 60%; /* 饼图宽度 */
-  margin: 0 auto; /* 居中 */
+  width: 100%; /* 饼图容器宽度自动取99% */
+  display: flex;
+  flex-direction: column; /* 垂直排列标题和图表 */
+  align-items: center; /* 水平中心对齐 */
+}
+
+.responsive-pie-chart {
+  max-width: 80%; /* 饼图最大宽度 */
+  height: auto; /* 让高度自适应，保持等比缩放 */
 }
 
 .line-chart-container {
@@ -161,11 +169,9 @@ export default defineComponent({
 }
 
 .select-wrapper {
-  position: absolute;
-  right: 8px;
-  top: 8px;
   display: flex;
   align-items: center;
+  margin-bottom: 16px; /* 为选择器和表格之间添加间距 */
 }
 
 .select-label {
